@@ -1,0 +1,80 @@
+
+Lmod is automatically replacing "Python/3.6.4" with "Conda/3".
+
+Cen16_06102019_R1_S32
+Begining virsorter2
+Thu May 18 14:56:21 EDT 2023
+[2023-05-18 14:56 INFO] VirSorter 2.2.4
+[2023-05-18 14:56 INFO] /mnt/home/barne424/anaconda3/envs/virsorter2/bin/virsorter run --seqname-suffix-off --viral-gene-enrich-off --provirus-off --prep-for-dramv -i /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/Cen16_06102019_R1_S32.checkV.out/combined_viruses.fna -w /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/Cen16_06102019_R1_S32.vs2_round2.out --include-groups dsDNAphage,ssDNA --min-length 5000 --min-score 0.5 -j 28 all
+[2023-05-18 14:56 INFO] Using /mnt/home/barne424/anaconda3/envs/virsorter2/lib/python3.10/site-packages/virsorter/template-config.yaml as config template
+[2023-05-18 14:56 INFO] conig file written to /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/Cen16_06102019_R1_S32.vs2_round2.out/config.yaml
+
+[2023-05-18 14:56 INFO] Executing: snakemake --snakefile /mnt/home/barne424/anaconda3/envs/virsorter2/lib/python3.10/site-packages/virsorter/Snakefile --directory /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/Cen16_06102019_R1_S32.vs2_round2.out --jobs 28 --configfile /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/Cen16_06102019_R1_S32.vs2_round2.out/config.yaml --latency-wait 600 --rerun-incomplete --nolock  --conda-frontend mamba --conda-prefix /mnt/ufs18/home-117/barne424/databases/virsorter2_db/conda_envs --use-conda    --quiet  all   
+Job counts:
+	count	jobs
+	1	all
+	1	check_point_for_reclassify
+	1	circular_linear_split
+	1	classify
+	2	classify_by_group
+	1	combine_linear_circular
+	2	combine_linear_circular_by_group
+	1	extract_feature
+	1	finalize
+	1	get_viral_combined
+	1	gff_feature
+	2	gff_feature_by_group
+	2	hmm_features_by_group
+	1	hmm_sort_to_best_hit_taxon
+	2	hmm_sort_to_best_hit_taxon_by_group
+	2	merge_annotation_table_by_group_from_split
+	1	merge_annotation_table_from_groups
+	1	merge_classification
+	2	merge_hmm_gff_features_by_group
+	6	merge_split_hmmtbl
+	12	merge_split_hmmtbl_by_group
+	12	merge_split_hmmtbl_by_group_tmp
+	1	pick_viral_fullseq
+	1	preprocess
+	1	split_faa
+	2	split_faa_by_group
+	2	split_gff_by_group
+	63
+[2023-05-18 14:58 INFO] # of seqs < 5000 bp and removed: 6
+[2023-05-18 14:58 INFO] # of circular seqs: 3
+[2023-05-18 14:58 INFO] # of linear seqs  : 220
+[2023-05-18 15:00 INFO] Finish spliting circular contig file with common rbs
+[2023-05-18 15:00 INFO] Finish spliting linear contig file with common rbs
+[2023-05-18 15:03 INFO] Step 1 - preprocess finished.
+[2023-05-18 15:52 INFO] Step 2 - extract-feature finished.
+[2023-05-18 15:53 INFO] 
+            ====> VirSorter run (non-provirus mode) finished.
+            # of contigs w/ >=2 genes as viral:	223
+            # of contigs w/ < 2 genes as viral:	0
+
+            Useful output files:
+            final-viral-score.tsv      ==> score table
+            final-viral-combined.fa    ==> all viral seqs
+            for-dramv                  ==> dir with input files for dramv
+            
+
+            NOTES: 
+            Users can further screen the results based on the 
+                following columns in final-viral-score.tsv
+                - contig length (length) 
+                - hallmark gene count (hallmark)
+                - viral gene % (viral) 
+                - cellular gene % (cellular)
+            The group field in final-viral-score.tsv should NOT be used
+                as reliable taxonomy info
+            We recommend this SOP/tutorial for quality control 
+                (make sure to use the lastest version):
+                https://dx.doi.org/10.17504/protocols.io.bwm5pc86
+
+            <====
+            
+[2023-05-18 15:53 INFO] Step 3 - classify finished.
+ 
+ 
+Done!
+Thu May 18 15:53:41 EDT 2023

@@ -1,0 +1,20 @@
+
+Lmod is automatically replacing "Python/3.6.4" with "Conda/3".
+
+Getting annotation tables
+Thu Jun  1 15:44:11 EDT 2023
+Number of arguments:  3 arguments.
+Sample list:  full_sample_list.txt
+Annotation directory:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis
+
+---
+
+Getting virsorter2 scores
+Number of viral containing contigs 14117
+Getting CheckV contamination scores
+Getting checkV scores
+Number of CheckV contigs 14483
+Getting DRAMv annotations
+Getting DRAMv distillates
+Done!
+Thu Jun  1 15:44:32 EDT 2023

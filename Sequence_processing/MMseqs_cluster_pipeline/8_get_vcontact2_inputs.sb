@@ -1,0 +1,47 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=Input_vcontact2
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=1G
+#SBATCH --output=S8_vcontact2_inputs.out
+#SBATCH -A shade-cole-bonito
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+echo "get vOTU protein fasta and gene-to-genome file"
+echo " "
+
+touch /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_clustered_viral_contigs_rep_seq.faa
+echo "protein_id,contig_id,keywords" > /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_gene_to_genome.csv
+
+for cFL in $(grep ">" /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs_rep_seq.fasta)
+do
+	sID=$(echo ${cFL} | sed 's/__.*//' | sed 's/>//')
+	cID=$(echo ${cFL} | sed 's/.*__NODE/NODE/')
+
+	grep -A 1 \
+		"${cID}" \
+		/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/DRAMv_annotate/${sID}.dramv_annotate.out/genes.faa | \
+		sed "s/>/>${sID}__/" >> \
+		/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_clustered_viral_contigs_rep_seq.faa
+
+	grep \
+		"${cID}" \
+		/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/DRAMv_annotate/${sID}.dramv_annotate.out/genes.faa | \
+		sed "s/ .*/,${sID}__${cID},unknown/" | \
+		sed "s/>/${sID}__/" >> \
+		/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_gene_to_genome.csv
+
+done
+
+echo "Done!"
+date
+conda deactivate

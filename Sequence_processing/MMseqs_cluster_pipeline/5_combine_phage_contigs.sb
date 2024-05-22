@@ -1,0 +1,32 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=get_phage_contigs
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=S5_phage_contigs.out
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+echo "Getting phage contigs as separate fasta files"
+date
+echo " "
+
+python Combine_phage_fasta.py \
+	phage_contig_list.txt \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/All_phage_contigs_comb \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2
+echo " "
+echo " "
+echo "Done!"
+date
+
+conda deactivate

@@ -1,0 +1,34 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=checkV
+#SBATCH --time=15:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=5G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=S10_checkV.out
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+echo "Begining checkV"
+date
+
+echo " "
+checkv end_to_end \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs_rep_seq.fasta \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/vOTU.checkV.out \
+	-t 1 \
+	-d ~/databases/checkv-db-v1.5
+echo " "
+
+echo "Done!"
+date
+
+conda deactivate
+

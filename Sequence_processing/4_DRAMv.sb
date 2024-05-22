@@ -1,0 +1,45 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=DRAMv
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=DRAMv.%A_%a.out
+#SBATCH --array=1-69
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+config=full_sample_config.txt
+
+pfx=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
+
+echo ${pfx}
+echo "Begining DRAM-v"
+date
+
+DRAM-v.py annotate \
+	-i /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/${pfx}.vs2_round2.out/for-dramv/final-viral-combined-for-dramv.fa \
+	-v /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/${pfx}.vs2_round2.out/for-dramv/viral-affi-contigs-for-dramv.tab \
+	-o /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/DRAMv_annotate/${pfx}.dramv_annotate.out \
+	--skip_trnascan \
+	--threads 1 \
+	--min_contig_size 1000
+
+DRAM-v.py distill \
+	-i /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/DRAMv_annotate/${pfx}.dramv_annotate.out/annotations.tsv \
+	-o /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/DRAMv_distill/${pfx}.dramv_distilled.out
+
+echo " "
+echo " "
+echo "Done!"
+date
+
+conda deactivate

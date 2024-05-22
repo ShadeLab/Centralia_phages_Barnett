@@ -1,0 +1,58 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=viral_blast
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=10G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=S11_blast_vOTU_CRISPR.output
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+echo "Generating new vOTU fasta with short names"
+python rename_vOTU_fasta.py \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs_rep_seq.fasta \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU_map.txt
+
+echo "Generating CRISPR fasta file"
+date
+echo " "
+python get_CRISPR_spacer_seq.py \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/annotations/CRISPR_annotations.txt \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/CRISPR.fasta
+echo " "
+
+echo "Begining blast processing"
+date
+echo " "
+
+echo "Making blast database"
+makeblastdb \
+	-in /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta \
+	-parse_seqids \
+	-dbtype nucl
+echo " "
+
+echo "Running blast"
+blastn \
+	-db /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta \
+	-query /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/CRISPR.fasta \
+	-out /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/CRISPR_vOTU_blast.txt \
+	-num_threads 10 \
+	-outfmt 6 \
+	-perc_identity 100
+
+echo " "
+echo " "
+echo "Done!"
+date
+
+conda deactivate

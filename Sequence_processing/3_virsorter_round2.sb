@@ -1,0 +1,45 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=virsorter_R2
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=10G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=virsorter_round2.%A_%a.out
+#SBATCH --array=1-69
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+config=full_sample_config.txt
+
+pfx=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
+
+echo ${pfx}
+echo "Begining virsorter2"
+date
+
+virsorter run \
+	--seqname-suffix-off \
+	--viral-gene-enrich-off \
+	--provirus-off \
+	--prep-for-dramv \
+	-i /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/${pfx}.checkV.out/combined_viruses.fna \
+	-w /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2/${pfx}.vs2_round2.out \
+	--include-groups dsDNAphage,ssDNA \
+	--min-length 5000 \
+	--min-score 0.5 \
+	-j 28 \
+	all
+echo " "
+echo " "
+echo "Done!"
+date
+
+conda deactivate

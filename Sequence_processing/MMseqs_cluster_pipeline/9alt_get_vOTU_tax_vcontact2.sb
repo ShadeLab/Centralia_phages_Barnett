@@ -1,0 +1,65 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=vcontact2
+#SBATCH --time=24:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=50
+#SBATCH --mem=100G
+#SBATCH --output=S9alt_vcontact2.out
+#SBATCH -A shade-cole-bonito
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate vContact2
+
+echo "Glue vOTU to INPHARED repo"
+cat /mnt/research/ShadeLab/Barnett/databases/inphared/1Nov2023_vConTACT2_proteins.faa \
+	> /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g.faa
+
+cat /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_clustered_viral_contigs_rep_seq.faa \
+	>> /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g.faa
+
+cat /mnt/research/ShadeLab/Barnett/databases/inphared/1Nov2023_vConTACT2_gene_to_genome.csv \
+	> /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g2g.csv
+
+tail -n +2 /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_gene_to_genome.csv \
+	>> /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g2g.csv
+
+echo "Run vconctact2"
+date
+echo " "
+vcontact2 \
+	--raw-proteins /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g.faa \
+	--rel-mode 'Diamond' \
+	--proteins-fp /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/tmp/combined_g2g.csv \
+	--db 'None' \
+	--pcs-mode MCL \
+	--vcs-mode ClusterONE \
+	--c1-bin /mnt/home/barne424/repo/cluster_one-1.0.jar \
+	--threads 50 \
+	--output-dir /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_INPHARED/vcontact2
+echo " "
+echo " "
+
+echo "Running graphanalyzer to get graph and taxonomy"
+date
+echo " "
+graphanalyzer.py \
+	--graph /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_INPHARED/vcontact2/c1.ntw \
+	--csv /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_INPHARED/vcontact2/genome_by_genome_overview.csv \
+	--metas /mnt/research/ShadeLab/Barnett/databases/inphared/1Nov2023_data_excluding_refseq.tsv \
+	--output /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vcontact/mmseqs_INPHARED/vcontact2 \
+	--prefix Cen \
+	--suffix _graphanalyzer \
+	--threads 50 \
+	--view 2d
+echo " "
+echo " "
+
+echo "Done!"
+date
+conda deactivate

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=vOTU_coverage
+#SBATCH --time=5:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=100
+#SBATCH --mem=100G
+#SBATCH --output=S7_vOTU_coverage.out
+#SBATCH -A shade-cole-bonito
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate metagenome_proc
+
+echo "Begining indexing"
+echo " "
+bbmap.sh ref=/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs_rep_seq.fasta \
+	threads=100
+
+echo " " 
+echo "Begining mapping"
+echo " "
+
+mkdir /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vOTU_coverages/temp_cov
+	
+for pfx2 in $(cat full_sample_list.txt)
+do
+	echo ${pfx2}
+	bbmap.sh in=/mnt/research/ShadeLab/Barnett/Centralia_metagenome/filt_seq/${pfx2}_R1.clean.EC.fastq.gz \
+		in2=/mnt/research/ShadeLab/Barnett/Centralia_metagenome/filt_seq/${pfx2}_R2.clean.EC.fastq.gz \
+		covstats=/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vOTU_coverages/temp_cov/${pfx2}.cov.txt \
+		threads=100 \
+		fast=t
+	echo " "
+done
+
+echo "Combining mapping"
+python combine_vOTU_depths.py \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vOTU_coverages/temp_cov \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/vOTU_coverages
+echo " "
+	
+echo "Cleanup"
+rm -r ref
+echo " "
+echo " "
+
+echo "Done!"
+date
+conda deactivate

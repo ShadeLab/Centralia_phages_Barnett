@@ -1,0 +1,27 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=annotation_tables
+#SBATCH --time=1:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=25G
+#SBATCH --output=Send_annotation_tables.out
+#SBATCH -A shade-cole-bonito
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate genome_annotation
+
+echo "Getting annotation tables"
+date
+python combine_annotation_tables.py \
+	full_sample_list.txt \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis
+echo "Done!"
+date
+
+conda deactivate

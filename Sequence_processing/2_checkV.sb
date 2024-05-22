@@ -1,0 +1,45 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=checkV
+#SBATCH --time=2:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=1
+#SBATCH --mem=5G
+#SBATCH -A shade-cole-bonito
+#SBATCH --output=checkV.%A_%a.out
+#SBATCH --array=1-69
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+config=full_sample_config.txt
+
+pfx=$(awk -v ArrayTaskID=$SLURM_ARRAY_TASK_ID '$1==ArrayTaskID {print $2}' $config)
+echo ${pfx}
+echo "Begining checkV"
+date
+
+echo " "
+checkv end_to_end \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round1/${pfx}.vs2_round1.out/final-viral-combined.fa \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/${pfx}.checkV.out \
+	-t 1 \
+	-d ~/databases/checkv-db-v1.5
+echo " "
+
+echo "Combining viral and proviral sequences"
+cat \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/${pfx}.checkV.out/proviruses.fna \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/${pfx}.checkV.out/viruses.fna \
+	> /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/checkV_output/${pfx}.checkV.out/combined_viruses.fna
+echo " "
+echo "Done!"
+date
+
+conda deactivate
+

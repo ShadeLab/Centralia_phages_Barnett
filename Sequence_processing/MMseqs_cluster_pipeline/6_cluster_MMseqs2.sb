@@ -1,0 +1,34 @@
+#!/bin/bash
+
+########### Resource request ############
+
+#SBATCH --job-name=cluster_vOTU
+#SBATCH --time=10:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=50
+#SBATCH --mem=250G
+#SBATCH --output=S6_MMseqs2.out
+#SBATCH -A shade-cole-bonito
+
+########### Command lines ###########
+
+module load Conda/3
+conda activate virsorter2
+
+echo "Begining clustering"
+date
+
+mmseqs easy-cluster \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/All_phage_contigs_comb/FullSet_viral_contigs.fasta \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs \
+	/mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/tmp \
+	--min-seq-id 0.95 \
+	--cov-mode 1 \
+	-c 0.85 \
+	--threads 50
+	
+echo "Done!"
+date
+
+conda deactivate

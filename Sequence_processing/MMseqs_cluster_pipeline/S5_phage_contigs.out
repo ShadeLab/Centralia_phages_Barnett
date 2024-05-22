@@ -1,0 +1,224 @@
+
+Lmod is automatically replacing "Python/3.6.4" with "Conda/3".
+
+Getting phage contigs as separate fasta files
+Thu Nov 16 12:40:38 EST 2023
+ 
+Number of arguments:  4 arguments.
+Viral contig list:  phage_contig_list.txt
+Phage directory:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/All_phage_contigs_comb
+Contig directory:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round2
+
+---
+
+In Cen11_11102016_R1_S8 there should be 76 viral contigs
+We actually found 76 viral contigs in the fasta file
+
+In Cen15_12102015_R1_S21 there should be 159 viral contigs
+We actually found 159 viral contigs in the fasta file
+
+In Cen17_05102021_R1_S41 there should be 7 viral contigs
+We actually found 7 viral contigs in the fasta file
+
+In Cen21_11102016_R1_S50 there should be 323 viral contigs
+We actually found 323 viral contigs in the fasta file
+
+In Cen22_12102015_R1_S56 there should be 162 viral contigs
+We actually found 162 viral contigs in the fasta file
+
+In Cen23_21102017_R1_S65 there should be 52 viral contigs
+We actually found 52 viral contigs in the fasta file
+
+In Cen23_04102018_R1_S66 there should be 38 viral contigs
+We actually found 38 viral contigs in the fasta file
+
+In Cen11_20102017_R1_S9 there should be 105 viral contigs
+We actually found 105 viral contigs in the fasta file
+
+In Cen14_13102020_R1_S19 there should be 97 viral contigs
+We actually found 97 viral contigs in the fasta file
+
+In Cen08_06102021_R1_S6 there should be 127 viral contigs
+We actually found 127 viral contigs in the fasta file
+
+In Cen16_12102015_R1_S28 there should be 114 viral contigs
+We actually found 114 viral contigs in the fasta file
+
+In Cen19_12102015_R1_S42 there should be 188 viral contigs
+We actually found 188 viral contigs in the fasta file
+
+In Cen14_02102018_R1_S17 there should be 168 viral contigs
+We actually found 168 viral contigs in the fasta file
+
+In Cen14_05102021_R1_S20 there should be 160 viral contigs
+We actually found 160 viral contigs in the fasta file
+
+In Cen21_12102015_R1_S49 there should be 230 viral contigs
+We actually found 230 viral contigs in the fasta file
+
+In Cen21_13102020_R1_S54 there should be 161 viral contigs
+We actually found 161 viral contigs in the fasta file
+
+In Cen22_03102018_R1_S59 there should be 224 viral contigs
+We actually found 224 viral contigs in the fasta file
+
+In Cen14_19102017_R1_S16 there should be 81 viral contigs
+We actually found 81 viral contigs in the fasta file
+
+In Cen22_20102017_R1_S58 there should be 259 viral contigs
+We actually found 259 viral contigs in the fasta file
+
+In Cen21_19102017_R1_S51 there should be 168 viral contigs
+We actually found 168 viral contigs in the fasta file
+
+In Cen15_11102016_R1_S22 there should be 195 viral contigs
+We actually found 195 viral contigs in the fasta file
+
+In Cen08_21102017_R1_S3 there should be 100 viral contigs
+We actually found 100 viral contigs in the fasta file
+
+In Cen08_15102020_R1_S5 there should be 163 viral contigs
+We actually found 163 viral contigs in the fasta file
+
+In Cen17_21102017_R1_S37 there should be 81 viral contigs
+We actually found 81 viral contigs in the fasta file
+
+In Cen16_05102021_R1_S34 there should be 171 viral contigs
+We actually found 171 viral contigs in the fasta file
+
+In Cen15_02102018_R1_S24 there should be 227 viral contigs
+We actually found 227 viral contigs in the fasta file
+
+In Cen16_19102017_R1_S30 there should be 191 viral contigs
+We actually found 191 viral contigs in the fasta file
+
+In Cen19_02102018_R1_S45 there should be 160 viral contigs
+We actually found 160 viral contigs in the fasta file
+
+In Cen17_12102016_R1_S36 there should be 184 viral contigs
+We actually found 184 viral contigs in the fasta file
+
+In Cen16_15102020_R1_S33 there should be 163 viral contigs
+We actually found 163 viral contigs in the fasta file
+
+In Cen21_06102019_R1_S53 there should be 207 viral contigs
+We actually found 207 viral contigs in the fasta file
+
+In Cen22_07102021_R1_S62 there should be 192 viral contigs
+We actually found 192 viral contigs in the fasta file
+
+In Cen15_13102020_R1_S26 there should be 274 viral contigs
+We actually found 274 viral contigs in the fasta file
+
+In Cen08_12102016_R1_S2 there should be 81 viral contigs
+We actually found 81 viral contigs in the fasta file
+
+In Cen19_06102019_R1_S46 there should be 509 viral contigs
+We actually found 509 viral contigs in the fasta file
+
+In Cen11_06102021_R1_S13 there should be 137 viral contigs
+We actually found 137 viral contigs in the fasta file
+
+In Cen11_06102019_R1_S11 there should be 88 viral contigs
+We actually found 88 viral contigs in the fasta file
+
+In Cen23_13102015_R1_S63 there should be 66 viral contigs
+We actually found 66 viral contigs in the fasta file
+
+In Cen19_19102017_R1_S44 there should be 133 viral contigs
+We actually found 133 viral contigs in the fasta file
+
+In Cen15_05102021_R1_S27 there should be 205 viral contigs
+We actually found 205 viral contigs in the fasta file
+
+In Cen14_06102019_R1_S18 there should be 136 viral contigs
+We actually found 136 viral contigs in the fasta file
+
+In Cen16_06102019_R1_S32 there should be 164 viral contigs
+We actually found 164 viral contigs in the fasta file
+
+In Cen21_02102018_R1_S52 there should be 61 viral contigs
+We actually found 61 viral contigs in the fasta file
+
+In Cen23_12102016_R1_S64 there should be 94 viral contigs
+We actually found 94 viral contigs in the fasta file
+
+In Cen22_06102019_R1_S60 there should be 190 viral contigs
+We actually found 190 viral contigs in the fasta file
+
+In Cen22_13102020_R1_S61 there should be 200 viral contigs
+We actually found 200 viral contigs in the fasta file
+
+In Cen15_19102017_R1_S23 there should be 163 viral contigs
+We actually found 163 viral contigs in the fasta file
+
+In Cen11_12102015_R1_S7 there should be 118 viral contigs
+We actually found 118 viral contigs in the fasta file
+
+In Cen11_03102018_R1_S10 there should be 162 viral contigs
+We actually found 162 viral contigs in the fasta file
+
+In Cen23_15102020_R1_S68 there should be 39 viral contigs
+We actually found 39 viral contigs in the fasta file
+
+In Cen11_13102020_R1_S12 there should be 69 viral contigs
+We actually found 69 viral contigs in the fasta file
+
+In Cen14_11102016_R1_S15 there should be 154 viral contigs
+We actually found 154 viral contigs in the fasta file
+
+In Cen14_12102015_R1_S14 there should be 144 viral contigs
+We actually found 144 viral contigs in the fasta file
+
+In Cen19_11102016_R1_S43 there should be 233 viral contigs
+We actually found 233 viral contigs in the fasta file
+
+In Cen19_05102021_R1_S48 there should be 210 viral contigs
+We actually found 210 viral contigs in the fasta file
+
+In Cen16_11102016_R1_S29 there should be 156 viral contigs
+We actually found 156 viral contigs in the fasta file
+
+In Cen19_13102020_R1_S47 there should be 187 viral contigs
+We actually found 187 viral contigs in the fasta file
+
+In Cen17_03102018_R1_S38 there should be 39 viral contigs
+We actually found 39 viral contigs in the fasta file
+
+In Cen21_05102021_R1_S55 there should be 197 viral contigs
+We actually found 197 viral contigs in the fasta file
+
+In Cen22_11102016_R1_S57 there should be 124 viral contigs
+We actually found 124 viral contigs in the fasta file
+
+In Cen08_04102018_R1_S4 there should be 88 viral contigs
+We actually found 88 viral contigs in the fasta file
+
+In Cen15_06102019_R1_S25 there should be 81 viral contigs
+We actually found 81 viral contigs in the fasta file
+
+In Cen16_02102018_R1_S31 there should be 146 viral contigs
+We actually found 146 viral contigs in the fasta file
+
+In Cen17_06102019_R1_S39 there should be 78 viral contigs
+We actually found 78 viral contigs in the fasta file
+
+In Cen23_06102021_R1_S69 there should be 25 viral contigs
+We actually found 25 viral contigs in the fasta file
+
+In Cen08_13102015_R1_S1 there should be 80 viral contigs
+We actually found 80 viral contigs in the fasta file
+
+In Cen17_14102020_R1_S40 there should be 33 viral contigs
+We actually found 33 viral contigs in the fasta file
+
+In Cen17_12102015_R1_S35 there should be 11 viral contigs
+We actually found 11 viral contigs in the fasta file
+
+In Cen23_07102019_R1_S67 there should be 54 viral contigs
+We actually found 54 viral contigs in the fasta file
+
+ 
+ 
+Done!
+Thu Nov 16 12:40:42 EST 2023

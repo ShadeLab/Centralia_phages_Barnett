@@ -1,0 +1,43 @@
+
+Lmod is automatically replacing "Python/3.6.4" with "Conda/3".
+
+Generating new vOTU fasta with short names
+Number of arguments:  4 arguments.
+Original vOTU fasta:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/clustered_phage_contigs/mmseqs_clustered_viral_contigs_rep_seq.fasta
+New vOTU fasta:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta
+Original to new name map:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU_map.txt
+
+---
+
+Number of vOTU: 7521
+Generating CRISPR fasta file
+Thu Nov 16 13:57:46 EST 2023
+ 
+Number of arguments:  3 arguments.
+CRISPR file:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/annotations/CRISPR_annotations.txt
+Output CRISPR fasta:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/CRISPR.fasta
+
+---
+
+ 
+Begining blast processing
+Thu Nov 16 13:57:52 EST 2023
+ 
+Making blast database
+
+
+Building a new DB, current time: 11/16/2023 13:57:53
+New DB name:   /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta
+New DB title:  /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/CRISPR_blast/vOTU.fasta
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 7521 sequences in 2.15878 seconds.
+
+
+ 
+Running blast
+ 
+ 
+Done!
+Thu Nov 16 13:58:05 EST 2023

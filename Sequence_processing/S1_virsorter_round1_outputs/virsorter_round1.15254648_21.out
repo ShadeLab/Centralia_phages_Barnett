@@ -1,0 +1,52 @@
+
+Lmod is automatically replacing "Python/3.6.4" with "Conda/3".
+
+Cen15_12102015_R1_S21
+Begining virsorter2
+Thu May 11 10:44:51 EDT 2023
+ 
+[2023-05-11 10:44 INFO] VirSorter 2.2.4
+[2023-05-11 10:44 INFO] /mnt/home/barne424/anaconda3/envs/virsorter2/bin/virsorter run --keep-original-seq -i /mnt/research/ShadeLab/Barnett/Centralia_metagenome/filt_contigs/Cen15_12102015_R1_S21.filt_scaffolds.fasta -w /mnt/research/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round1/Cen15_12102015_R1_S21.vs2_round1.out --include-groups dsDNAphage,ssDNA --min-length 5000 --min-score 0.5 -j 25 all
+[2023-05-11 10:44 INFO] Using /mnt/home/barne424/anaconda3/envs/virsorter2/lib/python3.10/site-packages/virsorter/template-config.yaml as config template
+[2023-05-11 10:44 INFO] conig file written to /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round1/Cen15_12102015_R1_S21.vs2_round1.out/config.yaml
+
+[2023-05-11 10:44 INFO] Executing: snakemake --snakefile /mnt/home/barne424/anaconda3/envs/virsorter2/lib/python3.10/site-packages/virsorter/Snakefile --directory /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round1/Cen15_12102015_R1_S21.vs2_round1.out --jobs 25 --configfile /mnt/ufs18/rs-033/ShadeLab/Barnett/Centralia_metagenome/phage_analysis/virsorter_round1/Cen15_12102015_R1_S21.vs2_round1.out/config.yaml --latency-wait 600 --rerun-incomplete --nolock  --conda-frontend mamba --conda-prefix /mnt/ufs18/home-117/barne424/databases/virsorter2_db/conda_envs --use-conda    --quiet  all   
+Job counts:
+	count	jobs
+	1	all
+	1	check_point_for_reclassify
+	1	circular_linear_split
+	1	classify
+	2	classify_by_group
+	2	classify_full_and_part_by_group
+	1	combine_linear_circular
+	2	combine_linear_circular_by_group
+	1	extract_feature
+	1	extract_provirus_seqs
+	1	finalize
+	1	gff_feature
+	2	gff_feature_by_group
+	2	hmm_features_by_group
+	1	hmm_sort_to_best_hit_taxon
+	2	hmm_sort_to_best_hit_taxon_by_group
+	1	merge_classification
+	1	merge_full_and_part_classification
+	2	merge_hmm_gff_features_by_group
+	2	merge_provirus_call_by_group_by_split
+	1	merge_provirus_call_from_groups
+	5	merge_split_hmmtbl
+	10	merge_split_hmmtbl_by_group
+	10	merge_split_hmmtbl_by_group_tmp
+	1	pick_viral_fullseq
+	1	preprocess
+	1	split_faa
+	2	split_faa_by_group
+	2	split_gff_by_group
+	61
+[2023-05-11 10:46 INFO] # of seqs < 5000 bp and removed: 112839
+[2023-05-11 10:46 INFO] # of circular seqs: 9
+[2023-05-11 10:46 INFO] # of linear seqs  : 15748
+[2023-05-11 10:48 INFO] Finish spliting circular contig file with common rbs
+[2023-05-11 10:48 INFO] Finish spliting linear contig file with common rbs
+[2023-05-11 11:14 INFO] Step 1 - preprocess finished.
+slurmstepd: error: *** JOB 15254669 ON amr-102 CANCELLED AT 2023-05-12T10:45:00 DUE TO TIME LIMIT ***
