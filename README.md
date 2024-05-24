@@ -20,10 +20,13 @@ Viruses are important components of the soil microbiome, influencing the populat
 Code is split up into two directories: [Sequence_processing](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Sequence_processing) and [Analysis](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Analysis).
 
 #### Sequence processing
-Code used for sequence processing including read QC, OTU clustering, taxonomy assignment, and tree building can be found under [Sequence_processing](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Sequence_processing). Scripts were run using SLURM on the MSU HPCC using slurm batch files with suffix .sb and are numbered by their order in the processing workflow. Outputs such as logs, warnings, or errors if any, are designated by the suffix .out and named in accordence with the library, run number, and slurm batch file. 
+Code used for sequence processing including viral sequence filtering, vOTU clustering, taxonomy assignment, and annotation can be found under [Sequence_processing](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Sequence_processing). Scripts were run using SLURM on the MSU HPCC using slurm batch files with suffix .sb and are numbered by their order in the processing workflow. Outputs such as logs, warnings, or errors if any, are designated by the suffix .out and named in accordence with the library, run number, and slurm batch file. 
 
 #### Analysis
 Formal analysis can be found under [Analysis](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Analysis). All analysis was run with R and code was run in Rmarkdown. In the analysis directory you'll find the raw Rmarkdown files (.Rmd), a github friendly markdown rendering (.md) and the associated figure files from the rendering in separate sub-directories. The analysis was broken down into multiple chunks in separate Rmarkdown files:
+
+*  [Main viral analysis](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Analysis/Main_viral_analysis.md): The majority of the viral analysis included in the manuscript.
+*  [Viral vs. Bacterial analysis](https://github.com/ShadeLab/Centralia_phages_Barnett/tree/main/Analysis/Viral_vs_bacterial.md): Compairing the viral community to the bacterial community (Mantel test and Procrustes analysis mainly).
 
 ### Funding
 This work was supported by the U.S. National Science Foundation CAREER award 1749544. This work was supported in part by Michigan State University through computational resources provided by the [Institute for Cyber-Enabled Research](https://icer.msu.edu/).
