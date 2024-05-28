@@ -9,7 +9,7 @@ Both the raw read data and metagenome assemblies for this study are available th
 
 ### To cite this work or code
 
-TBD
+Barnett SE, Shade A (2024). Soil viral community dynamics over seven years of heat disturbance: spatial variation exceeds temporal in annually sampled soils. BioRxiv, 2024.05.27.596044. DOI: 10.1101/2024.05.27.596044
 
 ### Abstract
 
